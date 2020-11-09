@@ -35,7 +35,8 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fitsSystemWindows="true">
+
+            android:fitsSystemWindows="true"><!--为系统状态留出空间，不然会和自己的APP头部挤在一起-->
 
             <!--引入布局-->
             <include layout="@layout/title"/>

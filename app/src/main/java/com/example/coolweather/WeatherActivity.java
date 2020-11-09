@@ -65,10 +65,15 @@ public class WeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
+        //实现背景图和手机状态栏融合在一起，这个功能在Android5.0及以上的系统才支持，所以我们要做一个版本号的判断
         if(Build.VERSION.SDK_INT >= 21)
         {
+            //拿到当前活动的DecorView
             View decorView = getWindow().getDecorView();
-            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            //调用它的setSystemUiVisibility()方法来改变系统UI的显示。
+            //这里传入View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN和View.SYSTEM_UI_FLAG_LAYOUT_STABLE就表示活动的布局会显示在状态栏上
+            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            //调用setStatusBarColor()方法将状态栏设置为透明色。
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
 
@@ -253,9 +258,9 @@ public class WeatherActivity extends AppCompatActivity {
             aqiText.setText(weather.aqi.city.aqi);
             pm25Text.setText(weather.aqi.city.pm25);
         }
-        String comfort = "舒适度" + weather.suggestion.comfort.info;
-        String carWash = "洗车指数" + weather.suggestion.carWash.info;
-        String sport = "运动建议" + weather.suggestion.sport.info;
+        String comfort = "舒适度：" + weather.suggestion.comfort.info;
+        String carWash = "洗车指数：" + weather.suggestion.carWash.info;
+        String sport = "运动建议：" + weather.suggestion.sport.info;
         comfortText.setText(comfort);
         carWashText.setText(carWash);
         sportText.setText(sport);
